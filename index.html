@@ -412,9 +412,140 @@
     line-height: 1.15;
   }
 
+  /* ── CTA FINAL ── */
+  .cta-final > div:last-child { text-align: right; }
+  @media (max-width: 768px) {
+    .cta-final { padding: 24px 20px !important; }
+    .cta-final > div:last-child { text-align: left; }
+    .cta-final > div:last-child img { margin-left: 0 !important; }
+  }
+
   /* ── PAGE BREAK HELPER ── */
   @media print {
     .slide { page-break-after: always; min-height: 100vh; }
+  }
+
+  /* ══════════════════════════════════════════════════
+     RESPONSIVE — TABLET  (max 1024px)
+  ══════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .slide { padding: 48px 48px; }
+    .slide-header { padding: 48px 48px 0; }
+    .gnext-logo-area { top: 24px; right: 48px; }
+    .gnext-logo-area img { height: 34px !important; }
+    .gnext-logo-area div img { height: 56px !important; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .sub-list { grid-template-columns: repeat(3, 1fr); }
+    .slide-num { right: 48px; }
+  }
+
+  /* ══════════════════════════════════════════════════
+     RESPONSIVE — MOBILE  (max 768px)
+  ══════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .slide {
+      padding: 24px 20px 48px;
+      min-height: auto;
+    }
+    .slide-header { padding: 32px 20px 0; }
+
+    /* Logo area: pull out of absolute, flow inline */
+    .gnext-logo-area {
+      position: relative;
+      top: auto; right: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      gap: 12px;
+    }
+    .gnext-logo-area img { height: 28px !important; }
+    .gnext-logo-area div img { height: 40px !important; }
+
+    /* Cover slide tweaks */
+    .cover-title { font-size: clamp(1.75rem, 8vw, 2.5rem) !important; }
+    .cover-subtitle { font-size: 0.9rem; margin-bottom: 28px; }
+    .cover-meta { gap: 20px; }
+    .cover-badge { font-size: 0.65rem; padding: 5px 12px; }
+
+    /* All grids → single column */
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-5 { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Service sub-list → 2 cols */
+    .sub-list { grid-template-columns: repeat(2, 1fr); }
+    .cat-desc { display: none; }
+
+    /* Stats */
+    .stat-num { font-size: 2.2rem; }
+
+    /* Tagline */
+    .tagline-display { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; }
+
+    /* Slide number */
+    .slide-num { right: 20px; bottom: 20px; }
+
+    /* Tables: make scrollable */
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+
+    /* Timeline: stack vertically */
+    .timeline { flex-direction: column; gap: 24px; }
+    .timeline::before { display: none; }
+    .timeline-item { padding-top: 0; padding-left: 36px; padding-right: 0; }
+    .timeline-dot { top: 2px; }
+
+    /* Final CTA block inside next-steps slide */
+    .slide-light > div[style*="justify-content:space-between"] {
+      flex-direction: column;
+      text-align: left;
+    }
+    .slide-light > div[style*="justify-content:space-between"] > div:last-child {
+      text-align: left;
+    }
+
+    /* Gradient bars in last CTA */
+    div[style*="align-items:center;justify-content:space-between"] {
+      flex-direction: column;
+      align-items: flex-start !important;
+    }
+    div[style*="align-items:center;justify-content:space-between"] > div:last-child {
+      text-align: left;
+    }
+    div[style*="align-items:center;justify-content:space-between"] > div:last-child img {
+      margin-left: 0 !important;
+    }
+
+    /* Swatch row: 2 cols */
+    .swatch { min-width: calc(50% - 8px); flex: none; }
+
+    /* Gradient bar */
+    div[style*="gap:16px"][style*="flex:1;height:56px"] { flex-direction: column; }
+
+    /* Cards */
+    .card, .card-blue, .card-dark, .card-accent { padding: 20px 16px; }
+
+    /* mt helpers on mobile */
+    .mt-40 { margin-top: 24px; }
+    .mt-48 { margin-top: 28px; }
+    .mt-32 { margin-top: 20px; }
+  }
+
+  /* ══════════════════════════════════════════════════
+     RESPONSIVE — SMALL MOBILE  (max 480px)
+  ══════════════════════════════════════════════════ */
+  @media (max-width: 480px) {
+    .slide { padding: 20px 16px 40px; }
+    .cover-title { font-size: clamp(1.5rem, 9vw, 2rem) !important; }
+    .slide-title { font-size: clamp(1.25rem, 6vw, 1.75rem) !important; }
+    .slide-lead { font-size: 0.875rem; }
+    .sub-list { grid-template-columns: 1fr; }
+    .stat-num { font-size: 1.8rem; }
+    .swatch { min-width: 100%; }
+    th, td { padding: 8px 10px; font-size: 0.78rem; }
+    .grid-3[style*="gap:20px"] { gap: 12px; }
   }
 
   /* ── SPACING HELPERS ── */
@@ -833,10 +964,10 @@
 
   <div style="margin-top:24px;">
     <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--steel);margin-bottom:12px;">Gradient Applications</div>
-    <div style="display:flex;gap:16px;">
-      <div style="flex:1;height:56px;border-radius:10px;background:linear-gradient(135deg,#0B1D3A 0%,#1A56DB 100%);display:flex;align-items:center;padding:0 20px;color:white;font-size:0.8rem;font-weight:600;">Hero Gradient — Dark to Blue</div>
-      <div style="flex:1;height:56px;border-radius:10px;background:linear-gradient(90deg,#1A56DB 0%,#00C2FF 100%);display:flex;align-items:center;padding:0 20px;color:white;font-size:0.8rem;font-weight:600;">Accent Gradient — Blue to Cyan</div>
-      <div style="flex:1;height:56px;border-radius:10px;background:linear-gradient(180deg,#E8F4FD 0%,#FFFFFF 100%);display:flex;align-items:center;padding:0 20px;color:var(--navy);font-size:0.8rem;font-weight:600;border:1px solid #DCE9F5;">Card Gradient — Light Blue to White</div>
+    <div class="gradient-bars" style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;height:56px;border-radius:10px;background:linear-gradient(135deg,#0B1D3A 0%,#1A56DB 100%);display:flex;align-items:center;padding:0 20px;color:white;font-size:0.8rem;font-weight:600;">Hero Gradient — Dark to Blue</div>
+      <div style="flex:1;min-width:200px;height:56px;border-radius:10px;background:linear-gradient(90deg,#1A56DB 0%,#00C2FF 100%);display:flex;align-items:center;padding:0 20px;color:white;font-size:0.8rem;font-weight:600;">Accent Gradient — Blue to Cyan</div>
+      <div style="flex:1;min-width:200px;height:56px;border-radius:10px;background:linear-gradient(180deg,#E8F4FD 0%,#FFFFFF 100%);display:flex;align-items:center;padding:0 20px;color:var(--navy);font-size:0.8rem;font-weight:600;border:1px solid #DCE9F5;">Card Gradient — Light Blue to White</div>
     </div>
   </div>
 
@@ -1278,7 +1409,7 @@
     </div>
   </div>
 
-  <div style="margin-top:48px;padding:32px 40px;background:var(--grad-hero);border-radius:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+  <div class="cta-final" style="margin-top:48px;padding:32px 40px;background:var(--grad-hero);border-radius:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
     <div>
       <div style="font-size:1.5rem;font-weight:800;color:white;margin-bottom:6px;">Let's build GLIMBSE GROUP together.</div>
       <div style="font-size:0.9rem;color:rgba(255,255,255,0.6);">Reach out to either of your service partners to discuss next steps.</div>
